@@ -6,3 +6,5 @@ github.com/kougazhang/requests v0.0.2-0.20201202022622-66e8765f88bb h1:ItroKWXL3
 github.com/kougazhang/requests v0.0.2-0.20201202022622-66e8765f88bb/go.mod h1:j73ObgFeTJTQIiYjTCnK94OtnQF8lEhlUFM0Tp1o8Wo=
 github.com/kougazhang/requests v0.0.2-0.20201202032608-f289a789f559 h1:ricuDGwuafBesDRc/5FOgG1i/LLXAzDsyInRVIVCfF4=
 github.com/kougazhang/requests v0.0.2-0.20201202032608-f289a789f559/go.mod h1:j73ObgFeTJTQIiYjTCnK94OtnQF8lEhlUFM0Tp1o8Wo=
+github.com/kougazhang/requests v0.0.2-0.20201202104830-69bcd77505c9 h1:xgZID9b1PYk6XNUVSPNVj7NuBTSpvs+10jfu2JWyxy4=
+github.com/kougazhang/requests v0.0.2-0.20201202104830-69bcd77505c9/go.mod h1:j73ObgFeTJTQIiYjTCnK94OtnQF8lEhlUFM0Tp1o8Wo=
