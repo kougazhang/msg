@@ -18,24 +18,39 @@ type Request struct {
     Keyword string `json:"keyword"`
 }
 
+type Options struct {
+    At
+}
+
 type RequestBody struct {
     Msgtype string `json:"msgtype"`
     Text    Text   `json:"text"`
+    At      At     `json:"at"`
 }
 
 type Text struct {
     Content string `json:"content"`
 }
 
-func (r Request) Send(msg string) (*Resp, error) {
+type At struct {
+    AtMobiles []string `json:"atMobiles"`
+    IsAtAll   bool     `json:"isAtAll"`
+}
+
+func (r Request) Send(msg string, options ...func(*Options)) (*Resp, error) {
+    optIns := &Options{}
+    for _, opt := range options {
+        opt(optIns)
+    }
+
     if len(r.Keyword) > 0 {
-        return r.sendByKeyword(msg)
+        return r.sendByKeyword(msg, optIns)
     }
 
     return nil, lib.ErrNotImplement
 }
 
-func (r Request) sendByKeyword(msg string) (*Resp, error) {
+func (r Request) sendByKeyword(msg string, optIns *Options) (*Resp, error) {
     req := requests.Request{
         URL: r.Url,
         Retry: &requests.Retry{
@@ -47,6 +62,7 @@ func (r Request) sendByKeyword(msg string) (*Resp, error) {
     data, err := req.PostJson(RequestBody{
         Msgtype: "text",
         Text:    Text{Content: fmt.Sprintf("[%s]%s", r.Keyword, msg)},
+        At:      optIns.At,
     })
     if err != nil {
         return nil, err

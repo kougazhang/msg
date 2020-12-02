@@ -11,7 +11,11 @@ func TestRequest_Send(t *testing.T) {
         Keyword: "msg",
     }
 
-    resp, err := req.Send("hello world")
+    resp, err := req.Send("hello world", func(options *Options) {
+        options.AtMobiles = []string{
+            "mobile",
+        }
+    })
     if err != nil {
         panic(err)
     }
